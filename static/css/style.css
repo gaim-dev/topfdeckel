@@ -1,0 +1,229 @@
+body {
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #eee;
+    min-height: 100vh;
+}
+a {
+    color: #c32148;
+}
+a:hover, a:active a:enabled { color: #801831; }
+h1, h2, h3, h4, h5, h6 { font-family: Oswald, sans-serif; }
+h1 { font-size: 2.756rem; }
+h2 { font-size: 2.441rem; }
+h3 { font-size: 1.953rem; }
+h4 { font-size: 1.563rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+.input.is-active, .input.is-focused, .input:active, .input:focus, .textarea.is-active, .textarea.is-focused, .textarea:active, .textarea:focus { border-color: #c32148; }
+.clearfix { clear: both; }
+/* fix viewport being too wide on mobile, see https://github.com/jgthms/bulma/issues/449#issuecomment-282548314 */
+.columns {  margin: 0; }
+@media screen and (min-width: 768px) {
+	.columns {
+	    margin-left: -0.75rem;
+	    margin-right: -0.75rem;
+	    margin-top: -0.75rem;
+	}
+}
+@media screen and (min-width: 1384px) {
+    .container {
+        width: 1152px;
+    }
+}
+
+#wrapper {
+    background-color: #fff;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+}
+
+#header {
+    border-top: 4px solid #c32148;
+    padding: 45px 25px;
+    margin-bottom: 0;
+}
+#header .logo {
+    width: 390px;
+    max-width: 90vw;
+}
+#header #social-icons img {
+    height: 44px;
+}
+#header #social-icons img:hover { opacity: 0.4; }
+
+nav.level {
+    background-color: #c32148;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0 20px;
+}
+/* Dropdown menu, see https://codepen.io/philhoyt/pen/ujHzd */
+nav.level ul {
+    position: relative;
+    float: left;
+}
+nav.level ul li {
+    position: relative;
+    float: left;
+}
+nav.level ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #a61d3c;
+    z-index: 999;
+}
+nav.level ul ul a { padding: 0; }
+nav.level ul ul li:hover { background-color: #bf1f41; }
+nav.level ul ul li {
+    float: none;
+    min-width: 150px;
+    padding: 15px 20px;
+}
+nav.level ul ul ul {
+    top: 0;
+    left: 100%;
+}
+nav.level ul li:hover > ul {
+    display: block;
+}
+nav.level a {
+    padding: 1em 1em;
+    font-size: 0.9em;
+    color: #fff;
+}
+nav.level-item a.is-tab.is-active, nav a.level-item.is-tab.is-active {
+    border: 0;
+    background-color: #be4968;
+    color: #fff;
+}
+nav.level-item a.is-tab:hover, nav a.level-item.is-tab:hover {
+    border: 0;
+    background-color: #be4968;
+    color: #fff;
+}
+
+#main-content { margin-top: 10px; }
+
+#sidebar .widget {
+    padding: 10px 25px;
+    font-size: 0.85em;
+}
+
+#articles {
+    margin: 10px 25px 10px 0;
+}
+.list-article {
+    border: 1px solid rgba(170, 170, 170, 0.51);
+    margin-bottom: 30px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.list-article img {
+    width: 100%;
+}
+.list-article .padded {
+    padding: 20px 35px;
+}
+.list-article .description {
+    padding: 10px 0;
+}
+.list-article footer {
+    background-color: rgba(170, 170, 170, 0.15);
+    font-size: 0.9em;
+}
+.list-article footer img {
+    padding-right: 5px;
+    height: 15px;
+    width: auto;
+}
+.a-tag + .a-tag:before { content: ", " }
+
+footer#footer {
+    background-color: #c32148;
+    color: #eee;
+    padding: 15px 30px;
+    font-size: 0.9rem;
+}
+
+#main-article-featured-img {
+    margin: auto auto 15px;
+}
+article.main-article aside img {
+    padding-right: 5px;
+    height: 15px;
+    width: auto;
+}
+aside#main-article-meta {
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+#main-article-content img, #main-article-featured-img {
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
+}
+#main-article-content img {
+    display: block;
+    margin: auto;
+}
+#main-article-after .tag-tag {
+    margin: 5px;
+    background-color: #f0f0f0;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+.next-post-preview {
+    margin-top: 30px;
+    opacity: 0.7;
+    background-size: cover;
+    padding: 20px;
+}
+.next-post-preview-content {
+    width: 80%;
+    margin: auto;
+    background-color: #000;
+    opacity: 0.7;
+    padding: 20px;
+}
+
+#main-article-recipe {
+    padding: 15px;
+    border: 1px solid #aaa;
+    background-color: rgba(238, 238, 238, 0.7);
+    width: 80%;
+    margin: 30px auto auto;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
+}
+#main-article-recipe-img {
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+    margin-right: 15px;
+    padding: 4px;
+    border: 1px solid #888;
+}
+.recipe-ingredient-unit, .recipe-ingredient-note {
+    color: #666;
+    font-size: 0.95em;
+}
+.recipe-ingredient-note:before { content: '('; }
+.recipe-ingredient-note:after { content: ')'; }
+.recipe-step img {
+    display: block;
+    margin: 15px auto;
+    width: 95%;
+}
+@media screen and (max-width: 768px) {
+    #main-article-recipe { width: 100%; }
+    #main-article-recipe-img {
+        display: none;
+    }
+    .recipe-step img { width: 100%; }
+}
+#main-article-recipe-note-img {
+    display: block;
+    margin: 15px auto;
+    width: 95%;
+}
