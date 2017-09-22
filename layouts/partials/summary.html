@@ -1,14 +1,3 @@
-<!--<article>-->
-<!--<h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>-->
-<!--<time>{{ .Date.Format "02.01.2006 15:04" }}</time>-->
-<!--{{ range .Params.tags }}-->
-<!--<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>-->
-<!--{{ end }}-->
-<!--<div>-->
-
-<!--</div>-->
-<!--</article>-->
-
 <article class="list-article">
     {{ if .Params.featuredImage }}
         <a href="{{ .Permalink }}"><img class="image" src="{{ .Params.featuredImage }}" alt="{{ .Title }}"></a>
@@ -27,10 +16,10 @@
         </p>
     </div>
     <footer><div class="padded"><div class="level">
-        {{if .Params.author }}<div class="level-item"><img src="{{ .Site.BaseURL }}img/icons/meta/user.svg"> <span class="meta-author">{{ .Params.author }}</span></div>{{ end }}
-        <div class="level-item"><img src="{{ .Site.BaseURL }}img/icons/meta/calendar.svg"> <span class="meta-date">{{ .Date.Format "2006-01-02" }}</span></div>
+        {{if .Params.author }}<div class="level-item"><img src="{{ "img/icons/meta/user.svg" | absURL }}"> <span class="meta-author">{{ .Params.author }}</span></div>{{ end }}
+        <div class="level-item"><img src="{{ "img/icons/meta/calendar.svg" | absURL }}"> <span class="meta-date">{{ .Date.Format "2006-01-02" }}</span></div>
         {{ if .Params.Kategorien }}
-            <div class="level-item"><img src="{{ .Site.BaseURL }}img/icons/meta/bookmark.svg"> <span class="meta-categories">{{ range .Params.Kategorien }}<span class="a-tag"><a href="{{ "/kategorien/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></span>{{ end }}</span></div>
+            <div class="level-item"><img src="{{ "img/icons/meta/bookmark.svg" | absURL }}"> <span class="meta-categories">{{ range .Params.Kategorien }}<span class="a-tag"><a href="{{ "/kategorien/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></span>{{ end }}</span></div>
         {{ end }}
     </div></div></footer>
 </article>

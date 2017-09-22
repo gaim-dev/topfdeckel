@@ -9,7 +9,7 @@
     {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Oswald:300">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
+    <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
     {{- if .RSSLink -}}<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
     <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />{{ end }}
     {{ .Hugo.Generator }}
@@ -18,14 +18,14 @@
 <div id="wrapper" class="container">
     <header id="header" class="level">
         <div class="level-left">
-            <div class="level-item"><a href="{{ .Site.BaseURL }}"><img class="logo" src="{{ .Site.BaseURL }}img/logo.svg" alt="kochfokus.de logo"></a></div>
+            <div class="level-item"><a href="{{ "/" | absURL }}"><img class="logo" src="{{ "img/logo.svg" | absURL }}" alt="kochfokus.de logo"></a></div>
         </div>
         <div id="social-icons" class="level-right is-hidden-mobile">
-            <div class="level-item"><a href="https://www.facebook.com/kochfokusDE/" target="_blank"><img src="{{ .Site.BaseURL }}img/icons/social/facebook.png" alt="kochfokus.de auf Facebook folgen"></a></div>
-            <div class="level-item"><a href="https://twitter.com/kochfokusDE/" target="_blank"><img src="{{ .Site.BaseURL }}img/icons/social/twitter.png" alt="kochfokus.de auf Twitter folgen"></a></div>
-            <div class="level-item"><a href="https://instagram.com/kochfokus/" target="_blank"><img src="{{ .Site.BaseURL }}img/icons/social/instagram.png" alt="kochfokus.de auf Instagram folgen"></a></div>
-            <div class="level-item"><a href="https://www.pinterest.com/gabrielealtpete/" target="_blank"><img src="{{ .Site.BaseURL }}img/icons/social/pinterest.png" alt="kochfokus.de auf Pinterest folgen"></a></div>
-            <div class="level-item"><a href="https://www.youtube.com/user/kochfokusTV/" target="_blank"><img src="{{ .Site.BaseURL }}img/icons/social/youtube.png" alt="kochfokus.de auf YouTube folgen"></a></div>
+            <div class="level-item"><a href="https://www.facebook.com/kochfokusDE/" target="_blank"><img src="{{ "img/icons/social/facebook.png" | absURL }}" alt="kochfokus.de auf Facebook folgen"></a></div>
+            <div class="level-item"><a href="https://twitter.com/kochfokusDE/" target="_blank"><img src="{{ "img/icons/social/twitter.png" | absURL }}" alt="kochfokus.de auf Twitter folgen"></a></div>
+            <div class="level-item"><a href="https://instagram.com/kochfokus/" target="_blank"><img src="{{ "img/icons/social/instagram.png" | absURL }}" alt="kochfokus.de auf Instagram folgen"></a></div>
+            <div class="level-item"><a href="https://www.pinterest.com/gabrielealtpete/" target="_blank"><img src="{{ "img/icons/social/pinterest.png" | absURL }}" alt="kochfokus.de auf Pinterest folgen"></a></div>
+            <div class="level-item"><a href="https://www.youtube.com/user/kochfokusTV/" target="_blank"><img src="{{ "img/icons/social/youtube.png" | absURL }}" alt="kochfokus.de auf YouTube folgen"></a></div>
         </div>
     </header>
 
