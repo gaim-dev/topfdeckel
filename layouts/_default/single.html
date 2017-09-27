@@ -25,14 +25,14 @@
 
             {{ with .Params.recipe }}
             <div id="main-article-recipe">
-                {{ if $.Params.featuredImage }}<img style="float: left;" id="main-article-recipe-img" class="image" src="
+                {{ if $.Params.featuredImage }}<img id="main-article-recipe-img" class="image" src="
                     {{- if $.Site.Params.useCdn -}}
     {{- delimit (slice $.Site.Params.cdnBaseUrl "/thumb/" $.Params.featuredImage) "" -}}
                 {{- else -}}
                 {{- delimit (slice $.Site.Params.s3BaseUrl "/thumb/" $.Params.featuredImage) "" -}}
                 {{- end -}}
                 " alt="{{ .Title }}"> {{ end }}
-                <h2>Rezept zu „{{ $.Title }}“</h2>
+                <h2 id="main-recipe-title">Rezept zu „{{ $.Title }}“</h2>
                 <div class="clearfix"></div>
                 <h3>Zutaten</h3>
                 {{ range .ingredients }}
