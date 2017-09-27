@@ -213,7 +213,6 @@ aside#main-article-meta {
 .recipe-step img {
     display: block;
     margin: 15px auto;
-    width: 95%;
 }
 @media screen and (max-width: 768px) {
     #main-article-recipe { width: 100%; }
@@ -225,5 +224,4 @@ aside#main-article-meta {
 #main-article-recipe-note-img {
     display: block;
     margin: 15px auto;
-    width: 95%;
 }

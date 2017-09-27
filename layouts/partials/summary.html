@@ -1,6 +1,12 @@
 <article class="list-article">
     {{ if .Params.featuredImage }}
-        <a href="{{ .Permalink }}"><img class="image" src="{{ .Params.featuredImage }}" alt="{{ .Title }}"></a>
+        <a href="{{ .Permalink }}"><img class="image" src="
+{{- if .Site.Params.useCdn -}}
+    {{- delimit (slice .Site.Params.cdnBaseUrl "/large/" .Params.featuredImage) "" -}}
+{{- else -}}
+    {{- delimit (slice .Site.Params.s3BaseUrl "/large/" .Params.featuredImage) "" -}}
+{{- end -}}
+" alt="{{ .Title }}"></a>
     {{ end }}
     <div class="padded">
         <a href="{{ .Permalink }}"><h2>{{ .Title }}</h2></a>

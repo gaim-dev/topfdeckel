@@ -12,54 +12,78 @@
             </div>
         </aside>
 
-        {{ if .Params.featuredImage }}<img id="main-article-featured-img" class="image" src="{{ .Params.featuredImage }}" alt="{{ .Title }}"> {{ end }}
+        {{ if .Params.featuredImage }}<img id="main-article-featured-img" class="image" src="
+{{- if .Site.Params.useCdn -}}
+    {{- delimit (slice .Site.Params.cdnBaseUrl "/large/" .Params.featuredImage) "" -}}
+        {{- else -}}
+        {{- delimit (slice .Site.Params.s3BaseUrl "/large/" .Params.featuredImage) "" -}}
+        {{- end -}}
+        " alt="{{ .Title }}"> {{ end }}
 
         <div id="main-article-content" class="content">
             {{ .Content }}
 
             {{ with .Params.recipe }}
-                <div id="main-article-recipe">
-                    {{ if $.Params.featuredImage }}<img style="float: left;" id="main-article-recipe-img" class="image" src="{{ $.Params.featuredImage }}" alt="{{ .Title }}"> {{ end }}
-                    <h2>Rezept zu „{{ $.Title }}“</h2>
-                    <div class="clearfix"></div>
-                    <h3>Zutaten</h3>
-                    {{ range .ingredients }}
-                        {{ if gt ($.Params.recipe.ingredients | len) 1 }}
-                            <h4>{{ .name }}</h4>
-                        {{ end }}
-                    <ul>
-                        {{ range .contents -}}
-                            <li class="recipe-ingredient">
-                                {{- if .value -}}<span class="recipe-ingredient-value">{{ .value }}</span> {{ end -}}
-                                {{- if .unit -}}<span class="recipe-ingredient-unit">{{ .unit }}</span> {{ end -}}
-                                {{- if .name -}}<span class="recipe-ingredient-name">{{ .name }}</span> {{ end -}}
-                                {{- if .note -}}<span class="recipe-ingredient-note">{{ .note }}</span> {{ end -}}
-                            </li>
-                        {{- end }}
-                    </ul>
-                    {{- end -}}
-                    <h3>Anleitung</h3>
-                    {{ range .steps }}
-                        {{ if gt ($.Params.recipe.steps | len) 1 }}
-                            <h4>{{ .name }}</h4>
-                        {{ end }}
-                    <ol>
-                        {{ range .contents -}}
-                            <li class="recipe-step">
-                                <p class="recipe-step-text">{{ .text }}
-                                    {{ if .photo -}}<br><img src="{{ .photo }}" alt="{{ .text }}">{{- end -}}
-                                </p>
-                            </li>
-                        {{- end }}
-                    </ol>
-                    {{- end -}}
+            <div id="main-article-recipe">
+                {{ if $.Params.featuredImage }}<img style="float: left;" id="main-article-recipe-img" class="image" src="
+                    {{- if $.Site.Params.useCdn -}}
+    {{- delimit (slice $.Site.Params.cdnBaseUrl "/thumb/" $.Params.featuredImage) "" -}}
+                {{- else -}}
+                {{- delimit (slice $.Site.Params.s3BaseUrl "/thumb/" $.Params.featuredImage) "" -}}
+                {{- end -}}
+                " alt="{{ .Title }}"> {{ end }}
+                <h2>Rezept zu „{{ $.Title }}“</h2>
+                <div class="clearfix"></div>
+                <h3>Zutaten</h3>
+                {{ range .ingredients }}
+                {{ if gt ($.Params.recipe.ingredients | len) 1 }}
+                <h4>{{ .name }}</h4>
+                {{ end }}
+                <ul>
+                    {{ range .contents -}}
+                    <li class="recipe-ingredient">
+                        {{- if .value -}}<span class="recipe-ingredient-value">{{ .value }}</span> {{ end -}}
+                        {{- if .unit -}}<span class="recipe-ingredient-unit">{{ .unit }}</span> {{ end -}}
+                        {{- if .name -}}<span class="recipe-ingredient-name">{{ .name }}</span> {{ end -}}
+                        {{- if .note -}}<span class="recipe-ingredient-note">{{ .note }}</span> {{ end -}}
+                    </li>
+                    {{- end }}
+                </ul>
+                {{- end -}}
+                <h3>Anleitung</h3>
+                {{ range .steps }}
+                {{ if gt ($.Params.recipe.steps | len) 1 }}
+                <h4>{{ .name }}</h4>
+                {{ end }}
+                <ol>
+                    {{ range .contents -}}
+                    <li class="recipe-step">
+                        <p class="recipe-step-text">{{ .text }}
+                            {{ if .photo -}}<br><img src="
+{{- if $.Site.Params.useCdn -}}
+    {{- delimit (slice $.Site.Params.cdnBaseUrl "/medium/" .photo) "" -}}
+{{- else -}}
+    {{- delimit (slice $.Site.Params.s3BaseUrl "/medium/" .photo) "" -}}
+{{- end -}}
+" alt="{{ .text }}">{{- end -}}
+                        </p>
+                    </li>
+                    {{- end }}
+                </ol>
+                {{- end -}}
 
-                    {{ with .notes }}
-                        <h3>Rezepthinweise</h3>
-                        {{ if .photo }}<img id="main-article-recipe-note-img" src="{{ .photo }}" alt="{{ .text }}">{{ end }}
-                        <p>{{ .text }}</p>
-                    {{ end }}
-                </div>
+                {{ with .notes }}
+                <h3>Rezepthinweise</h3>
+                {{ if .photo }}<img id="main-article-recipe-note-img" src="
+{{- if $.Site.Params.useCdn -}}
+    {{- delimit (slice $.Site.Params.cdnBaseUrl "/medium/" .photo) "" -}}
+{{- else -}}
+    {{- delimit (slice $.Site.Params.s3BaseUrl "/medium/" .photo) "" -}}
+{{- end -}}
+" alt="{{ .text }}">{{ end }}
+                <p>{{ .text }}</p>
+                {{ end }}
+            </div>
             {{ end }}
         </div>
 
@@ -78,9 +102,9 @@
                             <h2 style="color: #fff;">{{ .Next.Title }}</h2>
                             <div style="color: #fff; font-size: 13px; font-weight: bold;-">
                                 {{ if .Next.Description }}
-                                    {{ .Next.Description }}
+                                {{ .Next.Description }}
                                 {{ else }}
-                                    {{ .Next.Summary }}
+                                {{ .Next.Summary }}
                                 {{ end }}
                             </div>
                         </div>
