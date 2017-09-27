@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ .Title }}</title>
     {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
-    {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+    {{- with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end -}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Oswald:300">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css">
     <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
@@ -32,29 +32,28 @@
     <nav class="level is-hidden-mobile">
         <div class="level-left">
             <ul>
-                <li><a class="level-item is-tab is-active">Startseite</a></li>
-                <li><a class="level-item is-tab">About Me</a></li>
-                <li><a class="level-item is-tab">Allgemein</a>
-                    <ul>
-                        <li><a>Untermenü 1</a></li>
-                        <li><a>Untermenü 2</a>
+                {{- $currentPage := . -}}
+                {{- range .Site.Menus.main -}}
+                    {{- if .HasChildren -}}
+                        <li><a href="{{ .URL }}" class="level-item is-tab{{ if $currentPage.HasMenuCurrent "main" . }} is-active{{ end }}">{{ .Name }}</a>
                             <ul>
-                                <li><a>Unteruntermenü</a>
-                                    <ul>
-                                        <li><a>Unterunteruntermenü 1</a></li>
-                                        <li><a>Unterunteruntermenü 2</a></li>
-                                    </ul>
-                                </li>
+                                {{- range .Children -}}
+                                    <li><a href="{{ .URL }}">{{ .Name }}</a>
+                                        {{- if .HasChildren -}}
+                                            <ul>
+                                                {{- range .Children -}}
+                                                    <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                                                {{- end -}}
+                                            </ul>
+                                        {{- end -}}
+                                    </li>
+                                {{- end -}}
                             </ul>
                         </li>
-                    </ul>
-                </li>
-                <li><a class="level-item is-tab">Fit Food</a></li>
-                <li><a class="level-item is-tab">Getränke</a></li>
-                <li><a class="level-item is-tab">Quick and Easy</a></li>
-                <li><a class="level-item is-tab">Rezepte</a></li>
-                <li><a class="level-item is-tab">Wissenswert</a></li>
-                <li><a class="level-item is-tab">Impressum</a></li>
+                    {{- else -}}
+                        <li><a href="{{ .URL }}" class="level-item is-tab{{ if $currentPage.HasMenuCurrent "main" . }} is-active{{ end }}">{{ .Name }}</a></li>
+                    {{- end -}}
+                {{- end -}}
             </ul>
         </div>
     </nav>
