@@ -7,11 +7,12 @@
     <title>{{ .Title }}</title>
 
     <link rel="preconnect" href="https://img.kfcdn.de/">
-    <link rel="preload" as="font" crossorigin type="font/woff2" href="{{ "fonts/open-sans-v14-latin-700.woff2" | absURL }}">
-    <link rel="preload" as="font" crossorigin type="font/woff2" href="{{ "fonts/open-sans-v14-latin-700italic.woff2" | absURL }}">
-    <link rel="preload" as="font" crossorigin type="font/woff2" href="{{ "fonts/open-sans-v14-latin-italic.woff2" | absURL }}">
-    <link rel="preload" as="font" crossorigin type="font/woff2" href="{{ "fonts/open-sans-v14-latin-regular.woff2" | absURL }}">
-    <link rel="preload" as="font" crossorigin type="font/woff2" href="{{ "fonts/oswald-v14-latin-300.woff2" | absURL }}">
+    <!-- We can't do that for now because Netlify stores these files at a different URL (cloudfront), we might want to use our own CDN in the future… -->
+    <!--<link rel="preload" as="font" crossorigin type="font/woff2" href="{{ "fonts/open-sans-v14-latin-700.woff2" | absURL }}">-->
+    <!--<link rel="preload" as="font" crossorigin type="font/woff2" href="{{ "fonts/open-sans-v14-latin-700italic.woff2" | absURL }}">-->
+    <!--<link rel="preload" as="font" crossorigin type="font/woff2" href="{{ "fonts/open-sans-v14-latin-italic.woff2" | absURL }}">-->
+    <!--<link rel="preload" as="font" crossorigin type="font/woff2" href="{{ "fonts/open-sans-v14-latin-regular.woff2" | absURL }}">-->
+    <!--<link rel="preload" as="font" crossorigin type="font/woff2" href="{{ "fonts/oswald-v14-latin-300.woff2" | absURL }}">-->
 
     <style>{{ readFile "themes/topfdeckel/static/fonts/fonts.css" | safeCSS }}</style>
     <link rel="stylesheet" href="{{ "css/bulma.min.css" | absURL }}">
