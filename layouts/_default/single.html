@@ -85,9 +85,11 @@
 
         <div id="main-article-after">
             <div id="main-article-tags">
-                {{ range .Params.Tags }}
+                {{- if .Params.Tags }}
+                {{- range .Params.Tags }}
                 <a class="tag tag-tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-                {{ end }}
+                {{- end }}
+                {{- end }}
             </div>
             <div id="main-article-next-post">
                 {{ if .Next }}
