@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+<html lang="{{ .Site.LanguageCode | default "en-us" }}" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,23 +16,12 @@
     <link rel="stylesheet" href="{{ "fonts/fonts.css" | absURL }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css">
     <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
-    {{ if .RSSLink -}}
-        <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-        <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+    {{ if .Site.RSSLink -}}
+        <link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+        <link href="{{ .Site.RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{- end }}
-    {{ .Hugo.Generator }}
-    {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
-    {{- with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end -}}
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#c32148">
-    <meta name="msapplication-TileColor" content="#c32148">
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-    <meta name="theme-color" content="#c32148">
+    {{ partial "head/meta.html" . }}
+    {{ partial "head/favicons.html" . }}
 </head>
 <body>
 <div id="wrapper" class="container">
