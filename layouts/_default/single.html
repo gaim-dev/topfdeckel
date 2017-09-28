@@ -12,13 +12,7 @@
             </div>
         </aside>
 
-        {{ if .Params.featuredImage }}<img id="main-article-featured-img" class="image" src="
-{{- if .Site.Params.useCdn -}}
-    {{- delimit (slice .Site.Params.cdnBaseUrl "/large/" .Params.featuredImage) "" -}}
-        {{- else -}}
-        {{- delimit (slice .Site.Params.s3BaseUrl "/large/" .Params.featuredImage) "" -}}
-        {{- end -}}
-        " alt="{{ .Title }}"> {{ end }}
+        {{ if .Params.featuredImage }}<img id="main-article-featured-img" class="image" src="{{ partial "hack/featured_image.html" $ }}" alt="{{ .Title }}"> {{ end }}
 
         <div id="main-article-content" class="content">
             {{ .Content }}
@@ -95,13 +89,7 @@
             </div>
             <div id="main-article-next-post">
                 {{ if .Next }}
-                <div class="next-post-preview"{{ if .Next.Params.featuredimage }} style="background-image: url(
-                {{- if .Site.Params.useCdn -}}
-    {{- delimit (slice .Site.Params.cdnBaseUrl "/large/" .Next.Params.featuredimage) "" -}}
-                {{- else -}}
-                {{- delimit (slice .Site.Params.s3BaseUrl "/large/" .Next.Params.featuredimage) "" -}}
-                {{- end -}}
-                );"{{- end -}}>
+                <div class="next-post-preview"{{ if .Next.Params.featuredimage }} style="background-image: url({{ partial "hack/featured_image.html" $.Next }});"{{- end -}}>
                 <a href="{{ .Next.Permalink }}">
                     <div class="next-post-preview-content">
                         <div style="font-size: 13px; font-family: 'Open Sans', Helvetica, sans-serif; color: #fff; width: 100%; border-top: 2px solid #fff; margin-top: 20px; padding-top: 5px; text-transform: uppercase">auch interessant:</div>

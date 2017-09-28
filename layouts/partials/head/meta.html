@@ -2,17 +2,14 @@
 <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage }}{{ .Summary }}{{ end }}{{ end }}">
 {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end -}}
 
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="publisher" href="https://plus.google.com/116463124531358630463">
+
 <!-- Schema.org -->
 <meta itemprop="name" content="{{ .Title }} &ndash; kochfokus.de">
 <meta itemprop="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage }}{{ .Summary }}{{ end }}{{ end }}">
 <meta itemprop="keywords" content="{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s, " $term }}{{ end }}{{ end }}" />
-{{ with .Params.featuredImage }}<meta itemprop="image" content="
-{{- if $.Site.Params.useCdn -}}
-    {{- delimit (slice $.Site.Params.cdnBaseUrl "/large/" .) "" -}}
-{{- else -}}
-{{- delimit (slice $.Site.Params.s3BaseUrl "/large/" .) "" -}}
-{{- end -}}
-">{{ end }}
+{{ with .Params.featuredImage }}<meta itemprop="image" content="{{ partial "hack/featured_image.html" $ }}">{{ end }}
 {{ with .Params.author }}<meta itemprop="author" content="{{ . }}">{{ end }}
 <meta itemprop="datePublished" content="{{ .Date.Format "2006-01-02 15:04:05" }}">
 
@@ -29,28 +26,19 @@
 {{ with .Params.tags }}{{ range first 6 . -}}
 <meta property="article:tag" content="{{ . }}" />
 {{ end }}{{ end }}
-{{ with .Params.featuredImage }}<meta property="og:image" content="
-{{- if $.Site.Params.useCdn -}}
-    {{- delimit (slice $.Site.Params.cdnBaseUrl "/large/" .) "" -}}
-{{- else -}}
-{{- delimit (slice $.Site.Params.s3BaseUrl "/large/" .) "" -}}
-{{- end -}}
-">{{ end }}
+{{ with .Params.featuredImage }}<meta property="og:image" content="{{ partial "hack/featured_image.html" $ }}">{{ end }}
+<meta property="og:image:width" content="833">
+<meta property="og:image:width" content="436"> <!-- not the real value unfortunately but we don't seem to have a way to get that easily -->
 
 <!-- Facebook -->
 <meta property="article:publisher" content="https://www.facebook.com/kochfokusDE">
 <meta property="fb:admins" content="100001448522098">
+<meta property="fb:app_id" content="294088801073458">
 
 <!-- Twitter cards -->
 {{- with .Params.featuredImage }}
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="
-{{- if $.Site.Params.useCdn -}}
-    {{- delimit (slice $.Site.Params.cdnBaseUrl "/large/" .) "" -}}
-{{- else -}}
-{{- delimit (slice $.Site.Params.s3BaseUrl "/large/" .) "" -}}
-{{- end -}}
-">
+<meta name="twitter:image" content="{{ partial "hack/featured_image.html" $ }}">
 {{- else }}
 <meta name="twitter:card" content="summary">
 {{- end }}
