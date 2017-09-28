@@ -62,10 +62,10 @@
                             {{ if .photo -}}<br><img src="
 {{- if $.Site.Params.useCdn -}}
     {{- delimit (slice $.Site.Params.cdnBaseUrl "/medium/" .photo) "" -}}
-{{- else -}}
-    {{- delimit (slice $.Site.Params.s3BaseUrl "/medium/" .photo) "" -}}
-{{- end -}}
-" alt="{{ .text }}">{{- end -}}
+                            {{- else -}}
+                            {{- delimit (slice $.Site.Params.s3BaseUrl "/medium/" .photo) "" -}}
+                            {{- end -}}
+                            " alt="{{ .text }}">{{- end -}}
                         </p>
                     </li>
                     {{- end }}
@@ -77,10 +77,10 @@
                 {{ if .photo }}<img id="main-article-recipe-note-img" src="
 {{- if $.Site.Params.useCdn -}}
     {{- delimit (slice $.Site.Params.cdnBaseUrl "/medium/" .photo) "" -}}
-{{- else -}}
-    {{- delimit (slice $.Site.Params.s3BaseUrl "/medium/" .photo) "" -}}
-{{- end -}}
-" alt="{{ .text }}">{{ end }}
+                {{- else -}}
+                {{- delimit (slice $.Site.Params.s3BaseUrl "/medium/" .photo) "" -}}
+                {{- end -}}
+                " alt="{{ .text }}">{{ end }}
                 <p>{{ .text }}</p>
                 {{ end }}
             </div>
@@ -95,23 +95,29 @@
             </div>
             <div id="main-article-next-post">
                 {{ if .Next }}
-                <div class="next-post-preview" style="background-image: url({{ .Next.Params.featuredimage }});">
-                    <a href="{{ .Next.Permalink }}">
-                        <div class="next-post-preview-content">
-                            <div style="font-size: 13px; font-family: 'Open Sans', Helvetica, sans-serif; color: #fff; width: 100%; border-top: 2px solid #fff; margin-top: 20px; padding-top: 5px; text-transform: uppercase">auch interessant:</div>
-                            <h2 style="color: #fff;">{{ .Next.Title }}</h2>
-                            <div style="color: #fff; font-size: 13px; font-weight: bold;-">
-                                {{ if .Next.Description }}
-                                {{ .Next.Description }}
-                                {{ else }}
-                                {{ .Next.Summary }}
-                                {{ end }}
-                            </div>
+                <div class="next-post-preview" style="background-image: url(
+                {{- if .Site.Params.useCdn -}}
+    {{- delimit (slice .Site.Params.cdnBaseUrl "/large/" .Next.Params.featuredimage) "" -}}
+                {{- else -}}
+                {{- delimit (slice .Site.Params.s3BaseUrl "/large/" .Next.Params.featuredimage) "" -}}
+                {{- end -}}
+                );">
+                <a href="{{ .Next.Permalink }}">
+                    <div class="next-post-preview-content">
+                        <div style="font-size: 13px; font-family: 'Open Sans', Helvetica, sans-serif; color: #fff; width: 100%; border-top: 2px solid #fff; margin-top: 20px; padding-top: 5px; text-transform: uppercase">auch interessant:</div>
+                        <h2 style="color: #fff;">{{ .Next.Title }}</h2>
+                        <div style="color: #fff; font-size: 13px; font-weight: bold;-">
+                            {{ if .Next.Description }}
+                            {{ .Next.Description }}
+                            {{ else }}
+                            {{ .Next.Summary }}
+                            {{ end }}
                         </div>
-                    </a>
-                </div>
-                {{ end }}
+                    </div>
+                </a>
             </div>
+            {{ end }}
+        </div>
         </div>
     </article>
 </main>
