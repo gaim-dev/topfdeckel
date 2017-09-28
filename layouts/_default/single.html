@@ -18,15 +18,17 @@
             {{ .Content }}
 
             {{ with .Params.recipe }}
-            <div id="main-article-recipe">
-                {{ if $.Params.featuredImage }}<img id="main-article-recipe-img" class="image" src="
+            <div id="main-article-recipe" itemscope itemtype="https://schema.org/Recipe">
+                {{ if $.Params.featuredImage }}<img id="main-article-recipe-img" class="image" itemprop="image" src="
                     {{- if $.Site.Params.useCdn -}}
     {{- delimit (slice $.Site.Params.cdnBaseUrl "/thumb/" $.Params.featuredImage) "" -}}
                 {{- else -}}
                 {{- delimit (slice $.Site.Params.s3BaseUrl "/thumb/" $.Params.featuredImage) "" -}}
                 {{- end -}}
                 " alt="{{ .Title }}"> {{ end }}
-                <h2 id="main-recipe-title">Rezept zu „{{ $.Title }}“</h2>
+                <h2 id="main-recipe-title" itemprop="name">Rezept zu „{{ $.Title }}“</h2>
+                {{ with $.Params.author }}<meta itemprop="author" content="{{ . }}">{{ end }}
+                <meta itemprop="description" content="{{ if $.Description }}{{ $.Description }}{{ else }}{{if $.IsPage }}{{ $.Summary }}{{ end }}{{ end }}">
                 <div class="clearfix"></div>
                 <h3>Zutaten</h3>
                 {{ range .ingredients }}
@@ -35,7 +37,7 @@
                 {{ end }}
                 <ul>
                     {{ range .contents -}}
-                    <li class="recipe-ingredient">
+                    <li class="recipe-ingredient" itemprop="recipeIngredient">
                         {{- if .value -}}<span class="recipe-ingredient-value">{{ .value }}</span> {{ end -}}
                         {{- if .unit -}}<span class="recipe-ingredient-unit">{{ .unit }}</span> {{ end -}}
                         {{- if .name -}}<span class="recipe-ingredient-name">{{ .name }}</span> {{ end -}}
@@ -51,7 +53,7 @@
                 {{ end }}
                 <ol>
                     {{ range .contents -}}
-                    <li class="recipe-step">
+                    <li class="recipe-step" itemprop="recipeInstructions">
                         <p class="recipe-step-text">{{ .text }}
                             {{ if .photo -}}<br><img src="
 {{- if $.Site.Params.useCdn -}}
