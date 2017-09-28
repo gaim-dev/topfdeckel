@@ -95,13 +95,13 @@
             </div>
             <div id="main-article-next-post">
                 {{ if .Next }}
-                <div class="next-post-preview" style="background-image: url(
+                <div class="next-post-preview"{{ if .Next.Params.featuredimage }} style="background-image: url(
                 {{- if .Site.Params.useCdn -}}
     {{- delimit (slice .Site.Params.cdnBaseUrl "/large/" .Next.Params.featuredimage) "" -}}
                 {{- else -}}
                 {{- delimit (slice .Site.Params.s3BaseUrl "/large/" .Next.Params.featuredimage) "" -}}
                 {{- end -}}
-                );">
+                );"{{- end -}}>
                 <a href="{{ .Next.Permalink }}">
                     <div class="next-post-preview-content">
                         <div style="font-size: 13px; font-family: 'Open Sans', Helvetica, sans-serif; color: #fff; width: 100%; border-top: 2px solid #fff; margin-top: 20px; padding-top: 5px; text-transform: uppercase">auch interessant:</div>
