@@ -9,12 +9,12 @@ a {
 }
 a:hover, a:active a:enabled { color: #801831; }
 h1, h2, h3, h4, h5, h6 { font-family: Oswald, sans-serif; }
-h1 { font-size: 2.756rem; }
-h2 { font-size: 2.441rem; }
-h3 { font-size: 1.953rem; }
-h4 { font-size: 1.563rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h1, .content h1 { font-size: 2.756rem; }
+h2, .content h2 { font-size: 2.441rem; }
+h3, .content h3 { font-size: 1.953rem; }
+h4, .content h4 { font-size: 1.563rem; }
+h5, .content h5 { font-size: 1.25rem; }
+h6, .content h6 { font-size: 1rem; }
 .input.is-active, .input.is-focused, .input:active, .input:focus, .textarea.is-active, .textarea.is-focused, .textarea:active, .textarea:focus { border-color: #c32148; }
 .clearfix { clear: both; }
 /* fix viewport being too wide on mobile, see https://github.com/jgthms/bulma/issues/449#issuecomment-282548314 */
@@ -55,6 +55,7 @@ nav.level {
     background-color: #c32148;
     color: #fff;
     text-transform: uppercase;
+    font-size: 0.9em;
     font-weight: 600;
     padding: 0 20px;
 }

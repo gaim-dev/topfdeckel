@@ -1,0 +1,28 @@
+{{ partial "header.html" . }}
+<main class="content">
+    <h1>Inhalt nicht gefunden</h1>
+    <p>Der Inhalt, den Du aufrufen wolltest, konnte nicht gefunden werden.</p>
+    <p>Probiere doch die Suche aus oder versuch es hiermit:</p>
+    <div id="404-last-posts" style="margin-bottom: 20px;">
+        <h2>Letzte Beiträge</h2>
+        <ul>
+            {{ range first 3 (where .Data.Pages "Section" "post") }}
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+    <div id="main-article-after">
+        <div id="main-article-tags">
+            <h2>Kategorien</h2>
+            {{ range first 50 .Site.Taxonomies.Kategorien.ByCount }}
+            <a class="tag tag-tag" href="kategorien/{{ .Name | urlize }}">{{ .Name }}</a>
+            {{ end }}
+
+            <h2>Schlagwörter</h2>
+            {{ range first 50 .Site.Taxonomies.Tags.ByCount }}
+            <a class="tag tag-tag" href="tags/{{ .Name | urlize }}">{{ .Name }}</a>
+            {{ end }}
+        </div>
+    </div>
+</main>
+{{ partial "footer.html" . }}
