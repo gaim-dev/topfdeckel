@@ -224,14 +224,25 @@ img#main-article-recipe-img {
     display: block;
     margin: 15px auto;
 }
-@media screen and (max-width: 768px) {
-    #main-article-recipe { width: 100%; }
-    #main-article-recipe-img {
-        display: none;
-    }
-    #main-article-content .recipe-step img { width: 100%; }
-}
 #main-article-content #main-article-recipe-note-img {
     display: block;
     margin: 15px auto;
+}
+@media screen and (max-width: 768px) {
+    #header { padding: 10px 10px; }
+
+    #main-article-recipe { width: 100%; }
+    #main-recipe-title { margin: 0; }
+    img#main-article-recipe-img {
+        display: none;
+    }
+    #articles { margin: 0; }
+    #main-article-content .recipe-step img { width: 100%; }
+
+    #main-article-meta {
+        display: none;
+    }
+
+    .next-post-preview { padding: 0; }
+    .next-post-preview-content { width: 100%; }
 }
