@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="{{ "css/bulma.min.css" | absURL }}">
     <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
     {{ if .Site.RSSLink -}}
-        <link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-        <link href="{{ .Site.RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .Site.RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{- end }}
     {{ partial "head/meta.html" . }}
     {{ partial "head/favicons.html" . }}
@@ -43,28 +43,34 @@
             <ul>
                 {{- $currentPage := . -}}
                 {{- range .Site.Menus.main -}}
-                    {{- if .HasChildren -}}
-                        <li><a href="{{ .URL }}" class="level-item is-tab{{ if $currentPage.HasMenuCurrent "main" . }} is-active{{ end }}">{{ .Name }}</a>
+                {{- if .HasChildren -}}
+                <li><a href="{{ .URL }}" class="level-item is-tab{{ if $currentPage.HasMenuCurrent "main" . }} is-active{{ end }}">{{ .Name }}</a>
+                    <ul>
+                        {{- range .Children -}}
+                        <li><a href="{{ .URL }}">{{ .Name }}</a>
+                            {{- if .HasChildren -}}
                             <ul>
                                 {{- range .Children -}}
-                                    <li><a href="{{ .URL }}">{{ .Name }}</a>
-                                        {{- if .HasChildren -}}
-                                            <ul>
-                                                {{- range .Children -}}
-                                                    <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-                                                {{- end -}}
-                                            </ul>
-                                        {{- end -}}
-                                    </li>
+                                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
                                 {{- end -}}
                             </ul>
+                            {{- end -}}
                         </li>
-                    {{- else -}}
-                        <li><a href="{{ .URL }}" class="level-item is-tab{{ if $currentPage.HasMenuCurrent "main" . }} is-active{{ end }}">{{ .Name }}</a></li>
-                    {{- end -}}
+                        {{- end -}}
+                    </ul>
+                </li>
+                {{- else -}}
+                <li><a href="{{ .URL }}" class="level-item is-tab{{ if $currentPage.HasMenuCurrent "main" . }} is-active{{ end }}">{{ .Name }}</a></li>
+                {{- end -}}
                 {{- end -}}
             </ul>
         </div>
+    </nav>
+    <nav id="mobile-nav" class="is-hidden-tablet">
+        {{- $currentPage := . -}}
+        {{- range .Site.Menus.main -}}
+        <div class="mobile-nav-item"><a href="{{ .URL }}">{{ .Name }}</a></div>
+        {{- end -}}
     </nav>
 
     <section id="main-content" class="columns">

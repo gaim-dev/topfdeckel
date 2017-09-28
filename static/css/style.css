@@ -108,6 +108,10 @@ nav.level-item a.is-tab:hover, nav a.level-item.is-tab:hover {
     background-color: #be4968;
     color: #fff;
 }
+.mobile-nav-item {
+    display: inline-block;
+    padding: 7px;
+}
 
 #main-content { margin-top: 10px; }
 
