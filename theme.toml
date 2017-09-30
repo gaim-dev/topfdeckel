@@ -1,14 +1,9 @@
-# theme.toml template for a Hugo theme
-# See https://github.com/spf13/hugoThemes#themetoml for an example
-
 name = "Topfdeckel"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
+licenselink = "https://github.com/gaim-dev/topfdeckel/blob/master/LICENSE.md"
 description = "The Hugo theme for kochfokus.de"
 homepage = "https://kochfokus.de"
-tags = []
-features = []
-min_version = "0.21"
+min_version = "0.27"
 
 [author]
   name = "Benjamin Altpeter"
