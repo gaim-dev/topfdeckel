@@ -5,5 +5,29 @@
     © 2013 – {{ now.Year }} kochfokus.de, ein Angebot von Gabriele Altpeter, Internet Marketing-Services
 </footer>
 </div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+<script>
+      var client = algoliasearch("5NTEZN3YJ4", "30e37e645a441b7815af7b41f3da7278");
+      var index = client.initIndex("posts");
+      
+      autocomplete("#aa-search-input", { hint: false, debug: true }, {
+            source: autocomplete.sources.hits(index, { hitsPerPage: 7 }),
+            displayKey: "title",
+            templates: {
+                  suggestion: function(suggestion) {
+                        return '<a href="' + suggestion.url +'">'
+                              + (suggestion.image ? '<img class="aa-suggestion-image" src="' + suggestion.image + '">' : "")
+                              + '<p class="aa-suggestion-title">' + suggestion._highlightResult.title.value + '</p>'
+                              + (suggestion._highlightResult.description ? '<p class="aa-suggestion-excerpt">' + suggestion._highlightResult.description.value + '</p>' : '' )
+                              + '</a><div class="clearfix"></div>';
+                  },
+                  footer: function() {
+                        return '<a href="https://www.algolia.com/"><img id="aa-footer-logo" src="/img/search-by-algolia.svg"></a>';
+                  }
+            }
+      });
+</script>
 </body>
 </html>

@@ -120,6 +120,7 @@ nav.level-item a.is-tab:hover, nav a.level-item.is-tab:hover {
     padding: 10px 25px;
     font-size: 0.85em;
 }
+#sidebar h2 { font-size: 1.563em; }
 
 #articles {
     margin: 10px 25px 10px 0;
@@ -233,6 +234,47 @@ img#main-article-recipe-img {
     display: block;
     margin: 15px auto;
 }
+
+.algolia-autocomplete { width: 100%; }
+#aa-search-input { border-radius: 0; }
+#aa-search-input:focus, #aa-search-input:active {
+    background: none;
+}
+.aa-dropdown-menu {
+    background-color: #fff;
+    border: 1px solid rgba(228, 228, 228, 0.6);
+    width: 512px;
+    box-sizing: border-box;
+}
+.aa-suggestion {
+  padding: 12px;
+  cursor: pointer;
+}
+.aa-suggestion a { color: #4a4a4a; }
+.aa-suggestion + .aa-suggestion {
+    border-top: 1px solid rgba(228, 228, 228, 0.6);
+}
+.aa-suggestion:hover, .aa-suggestion.aa-cursor {
+    background-color: rgba(241, 241, 241, 0.35);
+}
+.aa-suggestion-image {
+    float: left;
+    height: 128px;
+    width: 128px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.aa-suggestion-title {
+    font-size: 1.563em;
+    font-family: Oswald, sans-serif;
+}
+#aa-footer-logo {
+    margin: 5px;
+    float: right;
+    width: 25%;
+    text-align: right;
+}
+
 @media screen and (max-width: 768px) {
     #header { padding: 10px 10px; }
 
