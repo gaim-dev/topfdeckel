@@ -6,9 +6,9 @@
 </footer>
 </div>
 
+{{ if .IsPage }}<script id="gotell" type="application/json">{"created_at":"{{ .Date.Format "2006-01-02T15:04:05" }}"}</script>{{ end }}
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-<script data-isso="https://comments.kochfokus.de/isso.fcgi" data-isso-lang="de" data-isso-reply-to-self="true" src="https://comments.kochfokus.de/isso.fcgi/js/embed.min.js"></script>
 <script>
       var client = algoliasearch("5NTEZN3YJ4", "30e37e645a441b7815af7b41f3da7278");
       var index = client.initIndex("posts");
