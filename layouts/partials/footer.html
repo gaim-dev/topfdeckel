@@ -6,7 +6,63 @@
 </footer>
 </div>
 
-{{ if .IsPage }}<script id="gotell" type="application/json">{"created_at":"{{ .Date.Format "2006-01-02T15:04:05" }}"}</script>{{ end }}
+{{ if .IsPage }}
+<script>
+      const API_URL = "https://comments.kochfokus.de/api";
+      const slug = document.location.pathname;
+      
+      window.onload = function() {
+            document.getElementById("submit-comment").addEventListener("click", submitCommentForm);
+            
+            fetch(API_URL + "/get" + slug).then(function(response) { return response.json(); })
+            .then(function(comments) {
+                  var comment_list = document.getElementById("comments");
+                  if(comments.length == 0) {
+                        comment_list.innerHTML += "Noch keine Kommentare vorhanden.";
+                  }
+                  else {
+                        var entry = document.createElement("div");
+                        entry.className = "comment-entry";
+                        comments.forEach(function(comment) {
+                              new_entry = entry.cloneNode();
+                              new_entry.innerHTML = '<p class="comment-meta">'
+                                    + '<span class="comment-author">' + comment.name + '</span>' + ' <span class="comment-date">(' + new Date(comment.date).toLocaleString() + ')</span>'
+                                    + '</p>'
+                                    + '<p class="comment-body">' + comment.body + '</p>'
+                                    + '</div>';
+                              comment_list.appendChild(new_entry);
+                        });
+                  }
+            });
+      };
+      
+      function submitCommentForm(e) {
+            e.preventDefault();
+            var author = document.getElementById("new-comment-author").value;
+            var body = document.getElementById("new-comment-body").value;
+      
+            if(!author || !body) {
+                  alert("Fehler beim Absenden des Kommentars: Bitte alle Felder ausfüllen.");
+                  return true;
+            }
+            
+            fetch(API_URL + "/add", {
+                  method: "post",
+                  headers: {"Content-Type" : "application/json"},
+                  body: JSON.stringify({
+                        name: author,
+                        body: body,
+                        post: slug
+                  })
+            }).then(function() {
+                  alert("Kommentar erfolgreich abgesendet. Der Kommentar wird erst angezeigt, wenn er von einem Administrator überprüft wurde.");
+                  document.getElementById("new-comment-author").value = "";
+                  document.getElementById("new-comment-body").value = "";
+                  })
+            .catch(function() { alert("Fehler beim Absenden des Kommentars. Bitte später erneut versuchen."); });
+      }
+</script>
+{{ end }}
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 <script>

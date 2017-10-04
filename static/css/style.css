@@ -16,6 +16,7 @@ h4, .content h4 { font-size: 1.563rem; }
 h5, .content h5 { font-size: 1.25rem; }
 h6, .content h6 { font-size: 1rem; }
 .input.is-active, .input.is-focused, .input:active, .input:focus, .textarea.is-active, .textarea.is-focused, .textarea:active, .textarea:focus { border-color: #c32148; }
+.button.is-focused, .button:focus { border-color: #c32148; }
 .clearfix { clear: both; }
 /* fix viewport being too wide on mobile, see https://github.com/jgthms/bulma/issues/449#issuecomment-282548314 */
 .columns {  margin: 0; }
@@ -274,6 +275,18 @@ img#main-article-recipe-img {
     width: 25%;
     text-align: right;
 }
+
+#comments { margin-bottom: 15px; }
+.comment-entry {
+    padding: 15px;
+    border: 1px solid rgba(170, 170, 170, 0.51);
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.comment-meta:after { content: ":"; }
+.comment-author { font-weight: bold; }
+.comment-body { white-space: pre-wrap; }
+#comment-form > * { margin-bottom: 7px; }
 
 @media screen and (max-width: 768px) {
     #header { padding: 10px 10px; }
