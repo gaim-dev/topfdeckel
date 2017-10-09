@@ -1,0 +1,7 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+    <ShortName>kochfokus.de</ShortName>
+    <Description>kochfokus.de ist Dein Kochblog</Description>
+    <Url type="text/html" method="get" template="https://kochfokus.de/search/?q={searchTerms}"/>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Image height="48" width="48" type="image/x-icon">https://kochfous.de/favicon.ico</Image>
+</OpenSearchDescription>

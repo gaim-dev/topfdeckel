@@ -247,17 +247,18 @@ img#main-article-recipe-img {
     width: 512px;
     box-sizing: border-box;
 }
-.aa-suggestion {
+.ais-infinite-hits--item, .aa-suggestion {
   padding: 12px;
   cursor: pointer;
 }
-.aa-suggestion a { color: #4a4a4a; }
+.ais-infinite-hits--item a, .aa-suggestion a { color: #4a4a4a; }
 .aa-suggestion + .aa-suggestion {
     border-top: 1px solid rgba(228, 228, 228, 0.6);
 }
-.aa-suggestion:hover, .aa-suggestion.aa-cursor {
+.ais-infinite-hits--item:hover, .aa-suggestion:hover, .aa-suggestion.aa-cursor {
     background-color: rgba(241, 241, 241, 0.35);
 }
+.ais-infinite-hits--showmore > button { float: right; }
 .aa-suggestion-image {
     float: left;
     height: 128px;
