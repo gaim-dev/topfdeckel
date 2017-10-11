@@ -72,6 +72,10 @@
         <div class="mobile-nav-item"><a href="{{ .URL }}">{{ .Name }}</a></div>
         {{- end -}}
     </nav>
+    
+    {{ if and (.IsPage) (not .Params.static) }}
+        {{ partial "sharebar.html" . }}
+    {{ end }}
 
     <section id="main-content" class="columns">
         {{ partial "sidebar.html" . }}

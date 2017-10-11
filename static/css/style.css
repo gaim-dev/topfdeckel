@@ -115,6 +115,19 @@ nav.level-item a.is-tab:hover, nav a.level-item.is-tab:hover {
     padding: 7px;
 }
 
+#sharebar {
+    position: fixed;
+    left: 0;
+    width: 50px;
+}
+.sharebar-icon {
+    background-color: #ffffff;
+    margin-top: 5px;
+    height: 50px;
+    text-align: center;
+}
+.sharebar-icon:hover { opacity: 0.7; }
+
 #main-content { margin-top: 10px; }
 
 #sidebar .widget {
