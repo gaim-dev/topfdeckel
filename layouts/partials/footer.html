@@ -78,7 +78,7 @@
       var index = client.initIndex("posts");
       
       autocomplete("#aa-search-input", { hint: false, debug: true }, {
-            source: autocomplete.sources.hits(index, { hitsPerPage: 7 }),
+            source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
             displayKey: "title",
             templates: {
                   suggestion: aaSearchItem,
@@ -100,7 +100,7 @@
       search.addWidget(instantsearch.widgets.searchBox({container: "#search-input"}));
       search.addWidget(instantsearch.widgets.infiniteHits({
             container: "#hits",
-            hitsPerPage: 1,
+            hitsPerPage: 50,
             templates: {
                   item: aaSearchItem,
                   empty: "Leider keine Ergebnisse für '<em>\{\{query}}</em>' gefunden."
