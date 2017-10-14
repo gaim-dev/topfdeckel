@@ -1,6 +1,7 @@
 body {
     font-family: 'Open Sans', Helvetica, sans-serif;
     font-size: 16px;
+    line-height: 1.6;
     background-color: #eee;
     min-height: 100vh;
 }
@@ -190,8 +191,7 @@ aside#main-article-meta {
     box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
 }
 #main-article-content img {
-    display: block;
-    margin: auto;
+    margin: 15px auto;
 }
 figcaption {
     text-align: center;
@@ -224,6 +224,10 @@ figcaption {
     width: 80%;
     margin: 30px auto auto;
     box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
+}
+#main-recipe-title {
+    font-size: 2.2rem;
+    margin-top: 19px;
 }
 img#main-article-recipe-img {
     float: left;

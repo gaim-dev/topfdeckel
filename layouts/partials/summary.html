@@ -19,7 +19,7 @@
         {{if .Params.author }}<div class="level-item"><img src="{{ "img/icons/meta/user.svg" | absURL }}"> <span class="meta-author">{{ .Params.author }}</span></div>{{ end }}
         <div class="level-item"><img src="{{ "img/icons/meta/calendar.svg" | absURL }}"> <span class="meta-date">{{ .Date.Format "2006-01-02" }}</span></div>
         {{ if .Params.Kategorien }}
-            <div class="level-item"><img src="{{ "img/icons/meta/bookmark.svg" | absURL }}"> <span class="meta-categories">{{ range .Params.Kategorien }}<span class="a-tag"><a href="{{ "/kategorien/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></span>{{ end }}</span></div>
+            <div class="level-item"><img src="{{ "img/icons/meta/bookmark.svg" | absURL }}"> <span class="meta-categories">{{ range .Params.Kategorien }}<span class="a-tag"><a href="{{ "/kategorien/" | relLangURL }}{{ . | urlize }}">{{ safeHTML . }}</a></span>{{ end }}</span></div>
         {{ end }}
     </div></div></footer>
 </article>
