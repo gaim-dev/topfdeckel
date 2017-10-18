@@ -253,27 +253,14 @@ img#main-article-recipe-img {
     margin: 15px auto;
 }
 
-.algolia-autocomplete { width: 100%; }
 #aa-search-input { border-radius: 0; }
-#aa-search-input:focus, #aa-search-input:active {
-    background: none;
-}
-.aa-dropdown-menu {
-    background-color: #fff;
-    border: 1px solid rgba(228, 228, 228, 0.6);
-    width: 640px;
-    box-sizing: border-box;
-}
 .ais-infinite-hits--item, .aa-suggestion {
   padding: 12px;
   cursor: pointer;
 }
-.ais-infinite-hits--item a, .aa-suggestion a { color: #4a4a4a; }
-.aa-suggestion + .aa-suggestion {
-    border-top: 1px solid rgba(228, 228, 228, 0.6);
-}
-.ais-infinite-hits--item:hover, .aa-suggestion:hover, .aa-suggestion.aa-cursor {
-    background-color: rgba(241, 241, 241, 0.35);
+.ais-infinite-hits--item a { color: #4a4a4a; }
+.ais-infinite-hits--item:hover {
+    background-color: rgba(241, 241, 241, 0.65);
 }
 .ais-infinite-hits--showmore > button { float: right; }
 .aa-suggestion-image {
