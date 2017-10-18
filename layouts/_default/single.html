@@ -2,6 +2,7 @@
 <main>
     <article class="main-article">
         <h1>{{ .Title }}</h1>
+        {{ if not .Params.static }}
         <aside id="main-article-meta">
             <div class="level">
                 {{ if .Params.author }}<div class="level-item"><img src="{{ "img/icons/meta/user.svg" | absURL }}"> <span class="meta-author">{{ .Params.author }}</span></div>{{ end }}
@@ -11,6 +12,7 @@
                 {{ end }}
             </div>
         </aside>
+        {{ end }}
 
         {{ if .Params.featuredImage }}<img id="main-article-featured-img" class="image" src="{{ partial "hack/featured_image.html" $ }}" alt="{{ .Title }}"> {{ end }}
 
@@ -83,6 +85,7 @@
             {{ end }}
         </div>
         
+        {{ if not .Params.static }}
         <div id="comments"><h2>Kommentare</h2></div>
         <div id="add-comment">
             <h2>Kommentar verfassen</h2>
@@ -105,23 +108,24 @@
             <div id="main-article-next-post">
                 {{ if .Next }}
                 <div class="next-post-preview"{{ if .Next.Params.featuredimage }} style="background-image: url({{ partial "hack/featured_image.html" $.Next }});"{{- end -}}>
-                <a href="{{ .Next.Permalink }}">
-                    <div class="next-post-preview-content">
-                        <div style="font-size: 13px; font-family: 'Open Sans', Helvetica, sans-serif; color: #fff; width: 100%; border-top: 2px solid #fff; margin-top: 20px; padding-top: 5px; text-transform: uppercase">auch interessant:</div>
-                        <h2 style="color: #fff;">{{ .Next.Title }}</h2>
-                        <div style="color: #fff; font-size: 13px; font-weight: bold;-">
-                            {{ if .Next.Description }}
-                            {{ .Next.Description }}
-                            {{ else }}
-                            {{ .Next.Summary }}
-                            {{ end }}
+                    <a href="{{ .Next.Permalink }}">
+                        <div class="next-post-preview-content">
+                            <div style="font-size: 13px; font-family: 'Open Sans', Helvetica, sans-serif; color: #fff; width: 100%; border-top: 2px solid #fff; margin-top: 20px; padding-top: 5px; text-transform: uppercase">auch interessant:</div>
+                            <h2 style="color: #fff;">{{ .Next.Title }}</h2>
+                            <div style="color: #fff; font-size: 13px; font-weight: bold;-">
+                                {{ if .Next.Description }}
+                                {{ .Next.Description }}
+                                {{ else }}
+                                {{ .Next.Summary }}
+                                {{ end }}
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
             {{ end }}
+            </div>
         </div>
-        </div>
+        {{ end }}
     </article>
 </main>
 {{ partial "footer.html" . }}
