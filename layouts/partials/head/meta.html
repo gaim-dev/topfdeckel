@@ -10,7 +10,7 @@
 <!-- Schema.org -->
 <meta itemprop="name" content="{{ .Title }} &ndash; kochfokus.de">
 <meta itemprop="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage }}{{ .Summary }}{{ end }}{{ end }}">
-<meta itemprop="keywords" content="{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s, " $term }}{{ end }}{{ end }}" />
+<meta itemprop="keywords" content="{{ with .Params.tags }}{{ delimit (first 6 .) ", " }}{{ end }}" />
 {{ with .Params.featuredImage }}<meta itemprop="image" content="{{ partial "hack/featured_image.html" $ }}">{{ end }}
 {{ with .Params.author }}<meta itemprop="author" content="{{ . }}">{{ end }}
 <meta itemprop="datePublished" content="{{ .Date.Format "2006-01-02 15:04:05" }}">
