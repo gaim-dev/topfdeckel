@@ -7,6 +7,12 @@
 </div>
 
 {{ if and (.IsPage) (not .Params.static) }}
+<script src="{{ "js/promise.min.js" | absURL }}"></script>
+<script src="{{ "js/unfetch.umd.js" | absURL }}"></script>
+<script>
+      if(!window.Promise) window.Promise = Promise;
+      if(!window.fetch) window.fetch = unfetch;
+</script>
 <script>
       const API_URL = "https://comments.kochfokus.de/api";
       const slug = document.location.pathname;
@@ -17,9 +23,7 @@
             fetch(API_URL + "/get" + slug).then(function(response) { return response.json(); })
             .then(function(comments) {
                   var comment_list = document.getElementById("comments");
-                  if(comments.length == 0) {
-                        comment_list.innerHTML += "Noch keine Kommentare vorhanden.";
-                  }
+                  if(comments.length == 0) comment_list.innerHTML += "Noch keine Kommentare vorhanden.";
                   else {
                         var entry = document.createElement("div");
                         entry.className = "comment-entry";
