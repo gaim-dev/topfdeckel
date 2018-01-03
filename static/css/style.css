@@ -311,3 +311,16 @@ img#main-article-recipe-img {
     .next-post-preview { padding: 0; }
     .next-post-preview-content { width: 100%; }
 }
+
+.amzn-affiliate-help {
+    padding: 15px;
+    border: 1px solid #aaa;
+    background-color: rgba(238, 238, 238, 0.7);
+    width: 80%;
+    margin: 30px auto auto;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
+}
+.amzn-affiliate-mark {
+    color: #9ece6a;
+    margin-left: 1px;
+}

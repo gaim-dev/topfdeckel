@@ -85,6 +85,13 @@
             {{ end }}
         </div>
         
+        {{ if ($.Scratch.Get "amzn_affiliate_used") }}
+        <div class="amzn-affiliate-help" id="amzn-affiliate-help">
+            <strong>Hinweis:</strong> Bei den mit <sup class="amzn-affiliate-mark">◆</sup> gekennzeichneten Links handelt es sich um sogenannte Affiliatelinks zu Amazon.<br>
+            Wenn Du über einen solchen Link eine Bestellung ausführst, erhält kochfokus.de einen kleinen Anteil am Verkaufserlös, ohne dass Dir dabei zusätzliche Kosten entstehen. <a href="https://kochfokus.de/impressum/#angaben-gem%C3%A4%C3%9F-5-tmg">Weitere Informationen</a>
+        </div>
+        {{ end }}
+        
         {{ if not .Params.static }}
         <div id="comments"><h2>Kommentare</h2></div>
         <div id="add-comment">
