@@ -1,2 +1,2 @@
-{{ $.Page.Scratch.Set "amzn_affiliate_used" true }}
+{{- $.Page.Scratch.Set "amzn_affiliate_used" true -}}
 <a class="amzn-affiliate" href="https://www.amazon.de/gp/search?ie=UTF8&tag=kochfokusde-21&keywords={{ with .Get "query"}}{{ . }}{{ end }}" target="_blank" rel="nofollow">{{ with .Get "title"}}{{ . }}{{ end }}</a><a href="#amzn-affiliate-help"><sup class="amzn-affiliate-mark">◆</sup></a>
