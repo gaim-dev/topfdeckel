@@ -68,7 +68,7 @@
 </script>
 {{ end }}
 {{ if and (.IsPage) (eq .Type "search") }}
-<script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+<script src="{{ "js/instantsearch.min.js" | absURL }}"></script>
 <script>
       function aaSearchItem(suggestion) {
             return '<a href="' + suggestion.url +'">'
