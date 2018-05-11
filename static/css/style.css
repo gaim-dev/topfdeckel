@@ -171,6 +171,9 @@ footer#footer {
     padding: 15px 30px;
     font-size: 0.9rem;
 }
+#footer-right { float: right; }
+footer#footer a { color: #fff; }
+footer#footer a:hover, footer#footer a:active, footer#footer a:enabled { color: #ccc; }
 
 #main-article-featured-img {
     margin: auto auto 15px;
