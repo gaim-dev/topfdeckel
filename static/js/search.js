@@ -41,6 +41,17 @@ search.addWidgets([
         showSubmit: false,
         showLoadingIndicator: false,
     }),
+    instantsearch.widgets.searchBox({
+        container: '#aa-search-input-mobile',
+        placeholder: 'Suchen…',
+        cssClasses: {
+            input: ['input'],
+        },
+        autofocus: true,
+        showReset: false,
+        showSubmit: false,
+        showLoadingIndicator: false,
+    }),
     instantsearch.widgets.infiniteHits({
         container: '#hits',
         templates: {

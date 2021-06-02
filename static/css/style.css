@@ -256,7 +256,7 @@ img#main-article-recipe-img {
     margin: 15px auto;
 }
 
-#aa-search-input,  #aa-search-input .ais-SearchBox-input { border-radius: 0; }
+#aa-search-input, #aa-search-input-mobile, #aa-search-input-mobile .ais-SearchBox-input, #aa-search-input .ais-SearchBox-input { border-radius: 0; }
 ol.ais-InfiniteHits-list { list-style: none; }
 .ais-InfiniteHits-item, .aa-suggestion {
   padding: 12px;

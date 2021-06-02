@@ -69,8 +69,16 @@
         {{- range .Site.Menus.main -}}
         <div class="mobile-nav-item"><a href="{{ .URL }}">{{ .Name }}</a></div>
         {{- end -}}
+
+        <form action="/search" method="get">
+            {{ if and (.IsPage) (eq .Type "search") }}
+                <div id="aa-search-input-mobile"></div>
+            {{ else }}
+                <input type="search" id="aa-search-input-mobile" class="aa-input-search input" name="q" autocomplete="off" placeholder="Suchen…">
+            {{ end }}
+        </form>
     </nav>
-    
+
     {{ if and (.IsPage) (not .Params.static) }}
         {{ partial "sharebar.html" . }}
     {{ end }}
