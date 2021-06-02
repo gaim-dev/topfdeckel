@@ -2,7 +2,11 @@
     <div class="widget">
         <div class="aa-input-container" id="aa-input-container">
             <form action="/search" method="get">
-                <input type="search" id="aa-search-input" class="aa-input-search input" name="q" autocomplete="off" placeholder="Suchen…">
+                {{ if and (.IsPage) (eq .Type "search") }}
+                    <div id="aa-search-input"></div>
+                {{ else }}
+                    <input type="search" id="aa-search-input" class="aa-input-search input" name="q" autocomplete="off" placeholder="Suchen…">
+                {{ end }}
             </form>
         </div>
     </div>

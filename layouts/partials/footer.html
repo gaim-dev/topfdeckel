@@ -17,10 +17,10 @@
 <script>
       const API_URL = "https://comments.kochfokus.de/api";
       const slug = document.location.pathname;
-      
+
       window.onload = function() {
             document.getElementById("submit-comment").addEventListener("click", submitCommentForm);
-            
+
             fetch(API_URL + "/get" + slug).then(function(response) { return response.json(); })
             .then(function(comments) {
                   var comment_list = document.getElementById("comments");
@@ -40,17 +40,17 @@
                   }
             });
       };
-      
+
       function submitCommentForm(e) {
             e.preventDefault();
             var author = document.getElementById("new-comment-author").value;
             var body = document.getElementById("new-comment-body").value;
-      
+
             if(!author || !body) {
                   alert("Fehler beim Absenden des Kommentars: Bitte alle Felder ausfüllen.");
                   return true;
             }
-            
+
             fetch(API_URL + "/add", {
                   method: "post",
                   headers: {"Content-Type" : "application/json"},
@@ -69,34 +69,9 @@
 </script>
 {{ end }}
 {{ if and (.IsPage) (eq .Type "search") }}
+<script src="{{ "js/instant-typesense.min.js" | absURL }}"></script>
 <script src="{{ "js/instantsearch.min.js" | absURL }}"></script>
-<script>
-      function aaSearchItem(suggestion) {
-            return '<a href="' + suggestion.url +'">'
-                  + (suggestion.image ? '<img class="aa-suggestion-image" src="' + suggestion.image + '">' : "")
-                  + '<p class="aa-suggestion-title">' + suggestion._highlightResult.title.value + '</p>'
-                  + (suggestion._highlightResult.description ? '<p class="aa-suggestion-excerpt">' + suggestion._highlightResult.description.value + '</p>' : '' )
-                  + '</a><div class="clearfix"></div>';
-      }
-
-      var search = instantsearch({
-            appId: "5NTEZN3YJ4",
-            apiKey: "30e37e645a441b7815af7b41f3da7278",
-            indexName: "posts",
-            urlSync: true
-      });
-      search.addWidget(instantsearch.widgets.searchBox({container: "#aa-search-input"}));
-      search.addWidget(instantsearch.widgets.infiniteHits({
-            container: "#hits",
-            hitsPerPage: 50,
-            templates: {
-                  item: aaSearchItem,
-                  empty: "Leider keine Ergebnisse für '<em>\{\{query}}</em>' gefunden."
-            },
-            showMoreLabel: "Weitere Ergebnisse laden"
-      }));
-      search.start();
-</script>
+<script src="{{ "js/search.js" | absURL }}"></script>
 {{ end }}
 </body>
 </html>
